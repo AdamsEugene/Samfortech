@@ -1,8 +1,8 @@
-export const CTASection = ({
-  setCurrentPage,
-}: {
-  setCurrentPage: (page: string) => void;
-}) => {
+import { useNavigate } from "react-router-dom";
+
+export const CTASection = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="py-20 bg-gradient-to-r from-cyan-600 to-blue-600">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -16,7 +16,7 @@ export const CTASection = ({
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button
-            onClick={() => setCurrentPage("contact")}
+            onClick={() => navigate("/contact")}
             className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg"
           >
             Get Free Quote

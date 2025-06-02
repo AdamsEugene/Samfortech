@@ -1,5 +1,6 @@
 import { Camera, Shield, Zap, Wifi, Phone, Eye } from "lucide-react";
 import { ServiceCard } from "./ServiceCard";
+import { useNavigate } from "react-router-dom";
 
 export interface Service {
   icon: React.ElementType;
@@ -9,11 +10,9 @@ export interface Service {
   gradient: string;
 }
 
-export const ServicesOverview = ({
-  setCurrentPage,
-}: {
-  setCurrentPage: (page: string) => void;
-}) => {
+export const ServicesOverview = () => {
+  const navigate = useNavigate();
+
   const services: Service[] = [
     {
       icon: Camera,
@@ -89,7 +88,7 @@ export const ServicesOverview = ({
 
         <div className="text-center mt-12">
           <button
-            onClick={() => setCurrentPage("services")}
+            onClick={() => navigate("/services")}
             className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg hover:from-cyan-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-cyan-500/25"
           >
             View All Services

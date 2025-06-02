@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { Header } from "./components/Header";
 import { ServicesPage } from "./pages/ServicesPage";
@@ -13,8 +14,6 @@ import { HomePage } from "./pages/HomePage";
 
 // Main App Component
 const SamfortechWebsite = () => {
-  const [currentPage, setCurrentPage] = useState("home");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -24,29 +23,28 @@ const SamfortechWebsite = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
-      <Header
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
-      />
+    <BrowserRouter>
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
+        <Header />
 
-      <main className="relative">
-        {currentPage === "home" && <HomePage setCurrentPage={setCurrentPage} />}
-        {currentPage === "about" && <AboutPage />}
-        {currentPage === "services" && <ServicesPage />}
-        {currentPage === "projects" && <ProjectsPage />}
-        {currentPage === "gallery" && <GalleryPage />}
-        {currentPage === "training" && <TrainingPage />}
-        {currentPage === "contact" && <ContactPage />}
-      </main>
+        <main className="relative">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/training" element={<TrainingPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </main>
 
-      <Footer setCurrentPage={setCurrentPage} />
+        <Footer />
 
-      {/* Scroll to Top Button */}
-      <ScrollToTop scrollY={scrollY} />
-    </div>
+        {/* Scroll to Top Button */}
+        <ScrollToTop scrollY={scrollY} />
+      </div>
+    </BrowserRouter>
   );
 };
 

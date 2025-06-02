@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-export const HeroSection = ({
-  setCurrentPage,
-}: {
-  setCurrentPage: (page: string) => void;
-}) => {
+export const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const navigate = useNavigate();
 
   const heroSlides = [
     {
@@ -64,13 +62,13 @@ export const HeroSection = ({
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button
-              onClick={() => setCurrentPage("contact")}
+              onClick={() => navigate("/contact")}
               className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg hover:from-cyan-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-cyan-500/25"
             >
               Get Free Quote
             </button>
             <button
-              onClick={() => setCurrentPage("services")}
+              onClick={() => navigate("/services")}
               className="px-8 py-4 border-2 border-cyan-400 text-cyan-400 font-semibold rounded-lg hover:bg-cyan-400 hover:text-white transition-all duration-300"
             >
               View Services

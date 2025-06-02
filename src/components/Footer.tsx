@@ -1,11 +1,10 @@
 import { Shield, Phone, Mail, MapPin } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-export const Footer = ({
-  setCurrentPage,
-}: {
-  setCurrentPage: (page: string) => void;
-}) => {
-  const services = [
+export const Footer = () => {
+  const navigate = useNavigate();
+
+  const services: string[] = [
     "CCTV Installation",
     "Gate Automation",
     "Electric Fencing",
@@ -15,11 +14,11 @@ export const Footer = ({
   ];
 
   const quickLinks = [
-    { label: "About Us", page: "about" },
-    { label: "Services", page: "services" },
-    { label: "Projects", page: "projects" },
-    { label: "Training", page: "training" },
-    { label: "Contact", page: "contact" },
+    { label: "About Us", page: "about", path: "/about" },
+    { label: "Services", page: "services", path: "/services" },
+    { label: "Projects", page: "projects", path: "/projects" },
+    { label: "Training", page: "training", path: "/training" },
+    { label: "Contact", page: "contact", path: "/contact" },
   ];
 
   return (
@@ -53,7 +52,7 @@ export const Footer = ({
               {services.map((service, index) => (
                 <li key={index}>
                   <button
-                    onClick={() => setCurrentPage("services")}
+                    onClick={() => navigate(`/services/${service}`)}
                     className="text-gray-400 hover:text-cyan-400 text-sm transition-colors duration-300"
                   >
                     {service}
@@ -70,7 +69,7 @@ export const Footer = ({
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <button
-                    onClick={() => setCurrentPage(link.page)}
+                    onClick={() => navigate(link.path)}
                     className="text-gray-400 hover:text-cyan-400 text-sm transition-colors duration-300"
                   >
                     {link.label}

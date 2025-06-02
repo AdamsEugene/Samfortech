@@ -5,19 +5,15 @@ import { ServicesOverview } from "../components/ServicesOverview";
 import { StatsSection } from "../components/StatsSection";
 import { TestimonialsSection } from "../components/TestimonialsSection";
 
-export const HomePage = ({
-  setCurrentPage,
-}: {
-  setCurrentPage: (page: string) => void;
-}) => {
+export const HomePage = () => {
   return (
     <>
-      <HeroSection setCurrentPage={setCurrentPage} />
+      <HeroSection />
       <StatsSection />
-      <ServicesOverview setCurrentPage={setCurrentPage} />
+      <ServicesOverview />
       <FeaturedProjects />
       <TestimonialsSection />
-      <CTASection setCurrentPage={setCurrentPage} />
+      <CTASection />
     </>
   );
 };

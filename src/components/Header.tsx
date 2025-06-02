@@ -1,24 +1,18 @@
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Shield, Menu, X } from "lucide-react";
 
-export const Header = ({
-  currentPage,
-  setCurrentPage,
-  isMenuOpen,
-  setIsMenuOpen,
-}: {
-  currentPage: string;
-  setCurrentPage: (page: string) => void;
-  isMenuOpen: boolean;
-  setIsMenuOpen: (open: boolean) => void;
-}) => {
+export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
   const navigation = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "services", label: "Services" },
-    { id: "projects", label: "Projects" },
-    { id: "gallery", label: "Gallery" },
-    { id: "training", label: "Training" },
-    { id: "contact", label: "Contact" },
+    { id: "home", label: "Home", path: "/" },
+    { id: "about", label: "About", path: "/about" },
+    { id: "services", label: "Services", path: "/services" },
+    { id: "projects", label: "Projects", path: "/projects" },
+    { id: "gallery", label: "Gallery", path: "/gallery" },
+    { id: "training", label: "Training", path: "/training" },
+    { id: "contact", label: "Contact", path: "/contact" },
   ];
 
   return (
@@ -36,17 +30,18 @@ export const Header = ({
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             {navigation.map((item) => (
-              <button
+              <Link
                 key={item.id}
-                onClick={() => setCurrentPage(item.id)}
+                to={item.path}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
-                  currentPage === item.id
+                  location.pathname === item.path
                     ? "text-cyan-400 bg-white/10"
                     : "text-white hover:text-cyan-400 hover:bg-white/5"
                 }`}
+                onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
           </nav>
 
@@ -54,6 +49,7 @@ export const Header = ({
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden p-2 rounded-md text-white hover:bg-white/10"
+            aria-label="Toggle menu"
           >
             {isMenuOpen ? (
               <X className="w-6 h-6" />
@@ -68,20 +64,18 @@ export const Header = ({
           <div className="md:hidden absolute top-16 left-0 right-0 bg-slate-800/95 backdrop-blur-lg border-b border-white/20">
             <div className="px-4 py-6 space-y-4">
               {navigation.map((item) => (
-                <button
+                <Link
                   key={item.id}
-                  onClick={() => {
-                    setCurrentPage(item.id);
-                    setIsMenuOpen(false);
-                  }}
+                  to={item.path}
                   className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
-                    currentPage === item.id
+                    location.pathname === item.path
                       ? "text-cyan-400 bg-white/10"
                       : "text-white hover:text-cyan-400 hover:bg-white/5"
                   }`}
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
-                </button>
+                </Link>
               ))}
             </div>
           </div>
