@@ -1,4 +1,7 @@
 import { ProjectCard } from "./ProjectCard";
+import corporate from "../assets/images/corporate.jpeg";
+import residential from "../assets/images/residential.jpeg";
+import industrial from "../assets/images/industrial.jpeg";
 
 export interface Project {
   title: string;
@@ -13,21 +16,21 @@ export const FeaturedProjects = () => {
     {
       title: "Corporate Office Security",
       category: "CCTV Installation",
-      image: "/src/assets/images/corporate.jpeg",
+      image: corporate,
       description: "32 camera CCTV system with central monitoring",
       stats: { cameras: "32", coverage: "100%", type: "IP Cameras" },
     },
     {
       title: "Residential Gate Automation",
       category: "Gate Automation",
-      image: "/src/assets/images/residential.jpeg",
+      image: residential,
       description: "Smart sliding gate with mobile app control",
       stats: { type: "Sliding Gate", control: "Mobile App", backup: "Battery" },
     },
     {
       title: "Industrial Electric Fencing",
       category: "Electric Fencing",
-      image: "/src/assets/images/industrial.jpeg",
+      image: industrial,
       description: "500m perimeter protection with alarm system",
       stats: { length: "500m", voltage: "8000V", zones: "4 Zones" },
     },
