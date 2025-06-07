@@ -1,31 +1,34 @@
 import { useState, useEffect } from "react";
 import { Star } from "lucide-react";
+import avatar1 from "../assets/images/testimonial1.jpeg";
+import avatar2 from "../assets/images/testimonial2.jpeg";
+import avatar3 from "../assets/images/testimonial3.jpeg";
 
 export const TestimonialsSection = () => {
   const testimonials = [
     {
-      name: "Kwame Asante",
-      role: "Business Owner",
-      company: "Asante Trading Ltd",
+      name: "H.E. IMANE OUAADIL",
+      role: "AMBASSADOR OF MOROCCO TO GHANA",
+      company: "AMBASSADOR OF MOROCCO TO GHANA",
       rating: 5,
       text: "Samfortech installed our complete CCTV system. Professional work, excellent quality, and great customer service. Highly recommended!",
-      avatar: "KA",
+      avatar: avatar1,
     },
     {
-      name: "Dr. Ama Osei",
+      name: "Dr Randy Abbey",
       role: "Medical Director",
       company: "Osei Medical Center",
       rating: 5,
       text: "The electric fencing and gate automation has greatly improved our security. The team was professional and completed the work on time.",
-      avatar: "AO",
+      avatar: avatar2,
     },
     {
-      name: "Michael Oppong",
+      name: "Adamu Musah Raha",
       role: "IT Manager",
       company: "Tech Solutions Ghana",
       rating: 5,
       text: "Outstanding networking setup for our office. Fast, reliable, and secure. The team provided excellent training for our staff.",
-      avatar: "MO",
+      avatar: avatar3,
     },
   ];
 
@@ -69,9 +72,11 @@ export const TestimonialsSection = () => {
               </blockquote>
 
               <div className="flex items-center justify-center space-x-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                  {testimonials[currentTestimonial].avatar}
-                </div>
+                <img
+                  src={testimonials[currentTestimonial].avatar}
+                  alt={testimonials[currentTestimonial].name}
+                  className="w-16 h-16 rounded-full object-cover border-4 border-cyan-500 shadow-lg"
+                />
                 <div className="text-left">
                   <div className="text-white font-bold text-lg">
                     {testimonials[currentTestimonial].name}
