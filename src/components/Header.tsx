@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Shield, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import logo from "../assets/images/logo.jpeg";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,7 +23,7 @@ export const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center">
-              <Shield className="w-6 h-6 text-white" />
+              <img src={logo} alt="logo" className="w-10 h-10 rounded-lg" />
             </div>
             <span className="text-xl font-bold text-white">SAMFORTECH</span>
           </div>
