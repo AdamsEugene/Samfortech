@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import hero1 from "../assets/images/hero1.jpeg";
+import hero2 from "../assets/images/hero2.jpeg";
+import hero3 from "../assets/images/hero3.jpeg";
 
 export const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -11,21 +14,21 @@ export const HeroSection = () => {
       subtitle: "24/7 Monitoring & Security",
       description:
         "Professional CCTV installation with remote monitoring capabilities for complete peace of mind.",
-      image: "security-camera-bg",
+      image: hero1,
     },
     {
       title: "Smart Gate Automation",
       subtitle: "Convenient Access Control",
       description:
         "Automated gate systems with remote control and safety features for modern security.",
-      image: "gate-automation-bg",
+      image: hero2,
     },
     {
       title: "Electric Fencing Systems",
       subtitle: "Perimeter Protection",
       description:
         "High-voltage electric fencing solutions for maximum property security and deterrence.",
-      image: "electric-fence-bg",
+      image: hero3,
     },
   ];
 
@@ -38,6 +41,13 @@ export const HeroSection = () => {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* Hero Slide Image */}
+      <img
+        src={heroSlides[currentSlide].image}
+        alt={heroSlides[currentSlide].title}
+        className="absolute inset-0 w-full h-full object-cover object-center z-0 transition-opacity duration-700"
+        style={{ opacity: 0.7 }}
+      />
       {/* Background with gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-blue-900/70 z-10"></div>
 
